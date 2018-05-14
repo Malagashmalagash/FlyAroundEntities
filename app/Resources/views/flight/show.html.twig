@@ -33,6 +33,18 @@
                 <th>Wasdone</th>
                 <td>{% if flight.wasDone %}Yes{% else %}No{% endif %}</td>
             </tr>
+            <tr>
+                <th>Pilot</th>
+                <td>{{ flight.pilot }}</td>
+            </tr>
+            <tr>
+                <th>Departure</th>
+                <td>{{ flight.departure }}</td>
+            </tr>
+            <tr>
+                <th>Arrival</th>
+                <td>{{ flight.arrival }}</td>
+            </tr>
         </tbody>
     </table>
 
