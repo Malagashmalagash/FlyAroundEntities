@@ -1,34 +1,40 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>List</h1>
+    <h1>Reviews list</h1>
+
     <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>User</th>
+            <th>Pilot rated</th>
+            <th>Text</th>
+            <th>Publication's date</th>
+            <th>Note</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
         <tbody>
         {% for review in reviews %}
             <tr>
-                <th>Review (id)</th>
-                <th>{{ review.id }}</th>
-            </tr>
-            <tr>
-                <th>Auteur de la review</th>
-                <th>{{ review.reviewAuthor }}</th>
-            </tr>
-            <tr>
-                <th>Personne notée</th>
-                <th>{{ review.userRated }}</th>
-            </tr>
-            <tr>
-                <th>Review utilisateur</th>
-                <th>{{ review.text }}</th>
-            </tr>
-            <tr>
-                <th>Note utilisateur</th>
-                <th>{{ review.note }}</th>
-            </tr>
-            <tr>
-                <th>Date de publication</th>
-                <th>{{ review.publicationDate | date('d/m/Y') }}</th>
-                <th>{{ review.publicationDate.timezone }}</th>
+                <td>{{ review.id }}</td>
+                <td>{{ review.reviewAuthor }}</td>
+                <td>{{ review.userRated }}</td>
+                <td>{{ review.text }}</td>
+                <td>{% if review.publicationDate %}{{ review.publicationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ review.note }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('review_show', { 'id': review.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('review_edit', { 'id': review.id }) }}">edit</a>
+                        </li>
+
+                    </ul>
+                </td>
             </tr>
         {% endfor %}
         </tbody>
@@ -36,10 +42,7 @@
 
     <ul>
         <li>
-            <a href="/review/new">Create a new review</a>
-        </li>
-        <li>
-            <a href="/">Return to homepage</a>
+            <a href="{{ path('review_new') }}">Create a new review</a>
         </li>
     </ul>
 {% endblock %}
