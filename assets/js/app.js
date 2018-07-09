@@ -1,7 +1,4 @@
-import $ from "jquery"
+require('../scss/main.scss');
+require('bootstrap');
 
-$(document).ready(function () {
-    console.log("ok, JQuery fonctionne !");
-});
-
-console.log('Bienvenue sur LA FlyAroundCompagny!')
+console.log("Est ce que vous êtes la ?");
