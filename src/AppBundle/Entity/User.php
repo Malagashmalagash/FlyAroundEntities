@@ -3,14 +3,16 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="`user`")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
-class User
+class User extends BaseUser
 {
 
     /*
@@ -44,15 +46,13 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
-
+    protected $id;
     /**
      * @var string
      *
      * @ORM\Column(name="firstName", type="string", length=32)
      */
     private $firstName;
-
     /**
      * @var string
      *
@@ -279,6 +279,7 @@ class User
      */
     public function __construct()
     {
+        parent::__construct();
         $this->reviewAuthor = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
