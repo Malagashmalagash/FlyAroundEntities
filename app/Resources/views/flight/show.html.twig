@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {{ dump(flight) }}
+    {{ dump(distance) }}
+    {{ dump(time) }}
     <h1>Flight</h1>
-
     <table>
         <tbody>
             <tr>
@@ -45,6 +47,15 @@
                 <th>Arrival</th>
                 <td>{{ flight.arrival }}</td>
             </tr>
+            <tr>
+                <th>Temps de trajet</th>
+                <td>{{ time }}</td>
+            </tr>
+            <tr>
+                <th>Distance parcourue</th>
+                <td>{{ distance }} km</td>
+            </tr>
+
         </tbody>
     </table>
 
